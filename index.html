@@ -3,336 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediSpot - Vadodara & Ahmedabad</title>
+    <title>MediSpot: Consult Doctors Online 24/7 - Medical Second Opinion</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .hero-gradient {
-            background: linear-gradient(rgba(14, 116, 144, 0.9), rgba(14, 116, 144, 0.8));
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
         }
         
-        .nav-link {
-            position: relative;
+        /* MediSpot Primary Color: #45C3F2 (Picton Blue) */
+        .text-icliniq { color: #45C3F2; }
+        .bg-icliniq { background-color: #45C3F2; }
+        .border-icliniq { border-color: #45C3F2; }
+        .hover-text-icliniq:hover { color: #2bb0e3; }
+        .hover-bg-icliniq:hover { background-color: #2bb0e3; }
+
+        /* Custom Scrollbar for Chat */
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
+        /* Hero Pattern */
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2345C3F2' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800">
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
-    <!-- Navigation -->
-    <nav class="bg-cyan-700 text-white sticky top-0 z-50 shadow-lg">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3">
-                    <i class="fas fa-heartbeat text-3xl text-cyan-200"></i>
-                    <div>
-                        <span class="font-bold text-xl block leading-none">MEDISPOT</span>
-                        <span class="font-light text-sm block leading-none text-cyan-200">MEDICAL FACILITY</span>
-                    </div>
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="window.location.reload()">
+                    <i class="fa-solid fa-stethoscope text-4xl text-icliniq mr-2"></i>
+                    <span class="text-3xl font-bold text-gray-800 tracking-tight">MediSpot</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#facilities" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Facilities</a>
-                        <a href="#team" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Our Team</a>
-                        <a href="#locations" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Locations</a>
-                        <a href="#contact" class="bg-white text-cyan-700 hover:bg-cyan-50 px-4 py-2 rounded-full font-bold transition duration-300">Book Appointment</a>
-                    </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-icliniq font-medium transition">Consult Doctor</a>
+                    <a href="#specialties" class="text-gray-600 hover:text-icliniq font-medium transition">Specialties</a>
+                    <a href="#" class="text-gray-600 hover:text-icliniq font-medium transition">Mental Health</a>
+                    <a href="#" class="text-gray-600 hover:text-icliniq font-medium transition">Lab Tests</a>
+                    <a href="#patient-form" class="text-gray-600 hover:text-icliniq font-medium transition">Patient Intake</a>
                 </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-icliniq font-medium">Log In</a>
+                    <a href="#" class="bg-icliniq text-white px-5 py-2.5 rounded-full font-semibold hover:bg-sky-500 transition shadow-md hover:shadow-lg">
+                        Join for Free
+                    </a>
+                </div>
+
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white hover:text-cyan-200 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cyan-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cyan-700">Home</a>
-                <a href="#facilities" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cyan-700">Facilities</a>
-                <a href="#team" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cyan-700">Our Team</a>
-                <a href="#locations" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-cyan-700">Locations</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium bg-cyan-900 text-white mt-2">Book Now</a>
-            </div>
+
+        <!-- Mobile Menu Panel -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#" class="block py-3 px-4 text-sm hover:bg-gray-100 text-gray-700">Consult Doctor</a>
+            <a href="#specialties" class="block py-3 px-4 text-sm hover:bg-gray-100 text-gray-700">Specialties</a>
+            <a href="#patient-form" class="block py-3 px-4 text-sm hover:bg-gray-100 text-gray-700">Patient Intake Form</a>
+            <a href="#" class="block py-3 px-4 text-sm hover:bg-gray-100 text-gray-700">Log In</a>
+            <a href="#" class="block py-3 px-4 text-sm hover:bg-gray-100 font-bold text-icliniq">Join for Free</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-cyan-700 h-[600px] flex items-center justify-center">
-        <!-- REPLACE THE SRC BELOW WITH YOUR FILE: "ChatGPT Image Nov 28, 2025, 10_34_53 PM.jpg" -->
-        <img src="https://images.unsplash.com/photo-1587351021759-3e566b9af923?auto=format&fit=crop&q=80&w=2000" alt="Hospital Building" class="absolute w-full h-full object-cover mix-blend-overlay opacity-40">
-        
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-md">
-                "Vishwas ka ilaaj, sehat ka saath."
+    <header class="bg-gradient-to-br from-sky-50 to-white hero-pattern py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Your Health, Our <span class="text-icliniq">Priority</span>
             </h1>
-            <p class="text-xl md:text-2xl text-cyan-100 italic font-light mb-8">
-                Easy and Simple for Healthy Life
+            
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Consult top doctors online, 24/7. Get medical second opinions, ask health queries, and book lab tests from the comfort of your home.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="bg-white text-cyan-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-cyan-50 transform hover:scale-105 transition duration-300">
-                    Book an Appointment
-                </a>
-                <a href="#facilities" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-cyan-700 transition duration-300">
-                    View Facilities
-                </a>
+
+            <!-- Search Bar -->
+            <div class="max-w-3xl mx-auto bg-white rounded-full shadow-xl p-2 flex items-center border border-gray-200 focus-within:ring-2 focus-within:ring-icliniq transition-all transform hover:scale-[1.01]">
+                <div class="pl-6 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                </div>
+                <input type="text" placeholder="Search doctors, specialties, symptoms..." 
+                    class="w-full p-4 text-gray-700 rounded-full focus:outline-none text-lg placeholder-gray-400">
+                <button class="bg-icliniq text-white px-8 py-3 rounded-full font-bold hover:bg-sky-500 transition duration-300 hidden sm:block">
+                    Search
+                </button>
+            </div>
+            
+            <!-- Quick Trust Stats -->
+            <div class="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 text-gray-600">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-clock text-2xl text-icliniq mr-3"></i>
+                    <span class="font-semibold text-lg">24/7 Support</span>
+                </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Info Cards -->
-    <div class="max-w-7xl mx-auto px-4 -mt-16 relative z-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
-                <div class="text-cyan-600 mb-4"><i class="fas fa-user-md text-3xl"></i></div>
-                <h3 class="text-xl font-bold mb-2">Expert Doctors</h3>
-                <p class="text-gray-600">Qualified specialists providing the best care in Vadodara and Ahmedabad.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
-                <div class="text-cyan-600 mb-4"><i class="fas fa-clock text-3xl"></i></div>
-                <h3 class="text-xl font-bold mb-2">24/7 Emergency</h3>
-                <p class="text-gray-600">Round-the-clock emergency services for critical care needs.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
-                <div class="text-cyan-600 mb-4"><i class="fas fa-microscope text-3xl"></i></div>
-                <h3 class="text-xl font-bold mb-2">Modern Lab</h3>
-                <p class="text-gray-600">High-tech diagnostic equipment for accurate and fast results.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Facilities Section -->
-    <section id="facilities" class="py-20 bg-slate-50">
+    <!-- Services / Specialties Section -->
+    <section id="specialties" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Departments</h2>
-                <p class="mt-4 text-gray-600">Comprehensive care under one roof.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Top Specialties</h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <!-- REPLACE THE SRC BELOW WITH YOUR FILE: "ChatGPT Image Nov 28, 2025, 10_44_42 PM.jpg" -->
-                <div class="lg:col-span-1 rounded-2xl overflow-hidden shadow-2xl h-full min-h-[400px] relative group sticky top-24">
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0833860?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Medical Equipment" 
-                         class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                        <p class="text-white font-bold text-lg">Advanced Medical Facilities</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center">
+                <!-- Specialty Card 1 -->
+                <div class="group flex flex-col items-center p-6 border border-gray-100 rounded-2xl hover:shadow-lg hover:border-icliniq transition cursor-pointer bg-gray-50 hover:bg-white">
+                    <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300 text-icliniq">
+                        <i class="fa-solid fa-person-pregnant text-2xl"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-icliniq">Gynecology</h3>
                 </div>
 
-                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Facility Items -->
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-user-md"></i></div>
-                        <h4 class="font-bold text-gray-800">Allopathic (MBBS/MD)</h4>
+                <!-- Specialty Card 2 -->
+                <div class="group flex flex-col items-center p-6 border border-gray-100 rounded-2xl hover:shadow-lg hover:border-icliniq transition cursor-pointer bg-gray-50 hover:bg-white">
+                    <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300 text-icliniq">
+                        <i class="fa-solid fa-allergies text-2xl"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-icliniq">Dermatology</h3>
+                </div>
 
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-500 hover:shadow-md transition">
-                        <div class="bg-green-100 p-3 rounded-full text-green-600 shrink-0"><i class="fas fa-leaf"></i></div>
-                        <h4 class="font-bold text-gray-800">Ayurvedic</h4>
+                <!-- Specialty Card 4 (Renumbered) -->
+                <div class="group flex flex-col items-center p-6 border border-gray-100 rounded-2xl hover:shadow-lg hover:border-icliniq transition cursor-pointer bg-gray-50 hover:bg-white">
+                    <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300 text-icliniq">
+                        <i class="fa-solid fa-brain text-2xl"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-icliniq">Psychiatry</h3>
+                </div>
 
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-yellow-500 hover:shadow-md transition">
-                        <div class="bg-yellow-100 p-3 rounded-full text-yellow-600 shrink-0"><i class="fas fa-mortar-pestle"></i></div>
-                        <h4 class="font-bold text-gray-800">Homeopathic</h4>
+                <!-- Specialty Card 5 -->
+                <div class="group flex flex-col items-center p-6 border border-gray-100 rounded-2xl hover:shadow-lg hover:border-icliniq transition cursor-pointer bg-gray-50 hover:bg-white">
+                    <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300 text-icliniq">
+                        <i class="fa-solid fa-stethoscope text-2xl"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-icliniq">Gen. Medicine</h3>
+                </div>
 
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-tooth"></i></div>
-                        <h4 class="font-bold text-gray-800">Dental</h4>
+                <!-- Specialty Card 6 -->
+                <div class="group flex flex-col items-center p-6 border border-gray-100 rounded-2xl hover:shadow-lg hover:border-icliniq transition cursor-pointer bg-gray-50 hover:bg-white">
+                    <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300 text-icliniq">
+                        <i class="fa-solid fa-child text-2xl"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-icliniq">Pediatrics</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-walking"></i></div>
-                        <h4 class="font-bold text-gray-800">Physiotherapy</h4>
+    <!-- Patient Form Section -->
+    <section id="patient-form" class="py-16 bg-sky-50 border-t border-sky-100">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="text-left mb-8 md:mb-0 md:w-2/3">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Patient Intake & Registration</h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            New to MediSpot? Please complete our secure online intake form before your first consultation. It only takes 2 minutes and helps our doctors understand your history better.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://forms.gle/hfQw4ywXctf5MkHX8" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-icliniq text-white text-lg font-bold rounded-lg hover:bg-sky-600 transition shadow-lg transform hover:-translate-y-1">
+                                <i class="fa-brands fa-google mr-2"></i> Fill Patient Form
+                            </a>
+                            <button onclick="document.getElementById('ai-fab').click()" class="inline-flex items-center justify-center px-8 py-4 bg-white text-icliniq border-2 border-icliniq text-lg font-bold rounded-lg hover:bg-sky-50 transition">
+                                <i class="fa-solid fa-robot mr-2"></i> Ask AI Assistant
+                            </button>
+                        </div>
                     </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-hand-sparkles"></i></div>
-                        <h4 class="font-bold text-gray-800">Dermatology (Skin)</h4>
-                    </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-ear-listen"></i></div>
-                        <h4 class="font-bold text-gray-800">ENT</h4>
-                    </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition">
-                        <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 shrink-0"><i class="fas fa-bone"></i></div>
-                        <h4 class="font-bold text-gray-800">Orthopedic</h4>
-                    </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-pink-500 hover:shadow-md transition">
-                        <div class="bg-pink-100 p-3 rounded-full text-pink-600 shrink-0"><i class="fas fa-baby"></i></div>
-                        <h4 class="font-bold text-gray-800">Gynecologist</h4>
-                    </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500 hover:shadow-md transition">
-                        <div class="bg-orange-100 p-3 rounded-full text-orange-600 shrink-0"><i class="fas fa-child"></i></div>
-                        <h4 class="font-bold text-gray-800">Pediatrician</h4>
-                    </div>
-
-                    <div class="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 hover:shadow-md transition sm:col-span-2">
-                        <div class="bg-blue-100 p-3 rounded-full text-blue-600 shrink-0"><i class="fas fa-stethoscope"></i></div>
-                        <h4 class="font-bold text-gray-800">General Physician</h4>
+                    <div class="md:w-1/3 flex justify-center">
+                        <i class="fa-solid fa-file-medical text-9xl text-sky-200"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="py-20 bg-white">
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
-                <div class="order-2 lg:order-1">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Meet Our Compassionate Team</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Our hospitals in Vadodara and Ahmedabad are staffed by experienced consultants, surgeons, and nursing staff dedicated to the slogan "Easy and Simple for Healthy Life".
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-cyan-500 mr-3"></i> Specialized Surgeons
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-cyan-500 mr-3"></i> Certified Nursing Staff
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-cyan-500 mr-3"></i> Patient Support Team
-                        </li>
-                    </ul>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 bg-sky-50 rounded-full flex items-center justify-center mx-auto mb-6 text-icliniq text-3xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-3">Ask a Query</h3>
+                    <p class="text-gray-600">Submit your health question or choose a specialty to consult.</p>
                 </div>
-                <!-- REPLACE THE SRC BELOW WITH YOUR FILE: "ChatGPT Image Nov 28, 2025, 10_45_03 PM.jpg" -->
-                <div class="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-2xl h-80 lg:h-96">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Doctors Team" 
-                         class="w-full h-full object-cover">
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 bg-sky-50 rounded-full flex items-center justify-center mx-auto mb-6 text-icliniq text-3xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-3">Connect with Doctor</h3>
+                    <p class="text-gray-600">A qualified doctor will review your case and answer via chat, audio, or video.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Locations Section -->
-    <section id="locations" class="py-20 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-12">Our Locations in Gujarat</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Location 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4 text-cyan-700">
-                        <i class="fas fa-map-marker-alt text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Vadodara</h3>
-                    <p class="text-gray-600">Alkapuri Road, Near Central Circuit<br>Vadodara, Gujarat 390007</p>
-                    <p class="mt-4 font-bold text-cyan-700"><i class="fas fa-phone-alt mr-2"></i>+91 82007 17517</p>
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 bg-sky-50 rounded-full flex items-center justify-center mx-auto mb-6 text-icliniq text-3xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-3">Get Prescription</h3>
+                    <p class="text-gray-600">Receive medical advice and digital prescription instantly.</p>
                 </div>
-                <!-- Location 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4 text-cyan-700">
-                        <i class="fas fa-map-marker-alt text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Ahmedabad</h3>
-                    <p class="text-gray-600">SG Highway, Near Iscon Cross Road<br>Ahmedabad, Gujarat 380015</p>
-                    <p class="mt-4 font-bold text-cyan-700"><i class="fas fa-phone-alt mr-2"></i>+91 82007 17517</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Form Section -->
-    <section id="contact" class="py-20 bg-cyan-800 text-white relative overflow-hidden">
-        <!-- Background decorative elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-cyan-700 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-600 rounded-full translate-x-1/3 translate-y-1/3 opacity-50"></div>
-
-        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to prioritize your health?</h2>
-            <p class="text-xl text-cyan-100 mb-8">Fill out our simple patient form to book an appointment or request a callback.</p>
-            
-            <div class="bg-white text-gray-800 rounded-2xl p-8 shadow-2xl max-w-3xl mx-auto">
-                <div class="mb-6 flex items-center justify-center space-x-2 text-cyan-700">
-                    <i class="fab fa-google text-2xl"></i>
-                    <span class="font-bold text-xl">Patient Registration Form</span>
-                </div>
-                <p class="mb-8 text-gray-600">Please click the button below to open our official registration form.</p>
-                
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDGQt6LP_du5ZHbLA22N6VaT7aNGu3pAlDDoRCBRqJLDFjPg/viewform?usp=dialog" 
-                   target="_blank"
-                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg hover:from-cyan-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    <i class="fas fa-calendar-check mr-3"></i>
-                    Open Registration Form
-                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-10">
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div>
-                    <h3 class="text-white text-lg font-bold mb-4">MediSpot</h3>
-                    <p class="text-sm">Providing exceptional healthcare services across Vadodara and Ahmedabad with a focus on simplicity and well-being.</p>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="#" class="hover:text-cyan-400"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-cyan-400"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
+                    <h3 class="text-2xl font-bold text-icliniq mb-6">MediSpot</h3>
+                    <p class="text-gray-400 mb-6">Your go-to platform for online medical consultations. Secure, private, and trusted by millions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-linkedin fa-lg"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#home" class="hover:text-cyan-400">Home</a></li>
-                        <li><a href="#facilities" class="hover:text-cyan-400">Facilities</a></li>
-                        <li><a href="#locations" class="hover:text-cyan-400">Locations</a></li>
-                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeDGQt6LP_du5ZHbLA22N6VaT7aNGu3pAlDDoRCBRqJLDFjPg/viewform?usp=dialog" class="hover:text-cyan-400">Book Appointment</a></li>
+                    <h4 class="text-lg font-semibold mb-6">For Patients</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-icliniq">Ask a Doctor</a></li>
+                        <li><a href="#" class="hover:text-icliniq">Search Hospitals</a></li>
+                        <li><a href="#" class="hover:text-icliniq">Health Articles</a></li>
+                        <li><a href="#" class="hover:text-icliniq">Consult via Phone</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-white text-lg font-bold mb-4">Emergency Contact</h3>
-                    <p class="text-sm mb-2"><i class="fas fa-phone mr-2 text-cyan-400"></i> +91 82007 17517</p>
-                    <p class="text-sm"><i class="fas fa-envelope mr-2 text-cyan-400"></i> help@medispot.com</p>
+                    <h4 class="text-lg font-semibold mb-6">Specialties</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-icliniq">Dermatology</a></li>
+                        <li><a href="#" class="hover:text-icliniq">Psychiatry</a></li>
+                        <li><a href="#" class="hover:text-icliniq">General Medicine</a></li>
+                        <li><a href="#" class="hover:text-icliniq">Gynaecology</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><i class="fa-solid fa-envelope mr-2"></i> support@medispot.com</li>
+                        <li><i class="fa-solid fa-phone mr-2"></i> +91 8200717517</li>
+                        <li><i class="fa-solid fa-location-dot mr-2"></i> Ahmedabad and Vadodara</li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-                <p>&copy; 2024 MediSpot. All rights reserved.</p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 MediSpot. All rights reserved. Replica for Educational Purposes.</p>
             </div>
         </div>
     </footer>
 
+    <!-- AI BOOT / Chat Widget -->
+    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+        
+        <!-- Chat Window (Hidden by default) -->
+        <div id="chat-window" class="hidden bg-white w-96 rounded-2xl shadow-2xl overflow-hidden border border-gray-100 flex-col mb-4 transition-all duration-300 transform origin-bottom-right scale-95 opacity-0">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-sky-500 to-sky-400 p-4 flex justify-between items-center text-white">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-sky-500 mr-3">
+                        <i class="fa-solid fa-robot text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">MediSpot Assistant</h3>
+                        <p class="text-xs text-sky-100 flex items-center">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-1"></span> Online
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:bg-white/20 rounded-full p-2 transition">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-gray-50 chat-scroll flex flex-col space-y-4">
+                <!-- Bot Welcome Message -->
+                <div class="flex justify-start">
+                    <div class="bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm max-w-[85%] text-sm">
+                        Hello! 👋 I'm the MediSpot AI Assistant. How can I help you today?
+                    </div>
+                </div>
+                <div class="flex justify-start">
+                     <div class="flex flex-wrap gap-2 mt-1">
+                        <button onclick="sendQuickMessage('Book Appointment')" class="text-xs bg-white border border-sky-200 text-sky-600 px-3 py-1.5 rounded-full hover:bg-sky-50 transition">📅 Book Appointment</button>
+                        <button onclick="sendQuickMessage('Symptom Check')" class="text-xs bg-white border border-sky-200 text-sky-600 px-3 py-1.5 rounded-full hover:bg-sky-50 transition">🤒 Check Symptoms</button>
+                        <button onclick="sendQuickMessage('Pricing')" class="text-xs bg-white border border-sky-200 text-sky-600 px-3 py-1.5 rounded-full hover:bg-sky-50 transition">💲 Pricing</button>
+                        <button onclick="sendQuickMessage('Patient Form')" class="text-xs bg-white border border-sky-200 text-sky-600 px-3 py-1.5 rounded-full hover:bg-sky-50 transition">📝 Fill Form</button>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-white border-t border-gray-100">
+                <form id="chat-form" onsubmit="handleUserMessage(event)" class="flex items-center space-x-2">
+                    <input type="text" id="user-input" placeholder="Type your health query..." class="flex-1 bg-gray-100 text-gray-800 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-300 text-sm">
+                    <button type="submit" class="bg-icliniq text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-sky-500 transition shadow-sm">
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Floating Action Button (FAB) -->
+        <button id="ai-fab" onclick="toggleChat()" class="bg-icliniq hover:bg-sky-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 group relative">
+            <i class="fa-solid fa-comment-medical text-2xl group-hover:hidden"></i>
+            <i class="fa-solid fa-chevron-up text-2xl hidden group-hover:block"></i>
+            
+            <!-- Notification Badge -->
+            <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full border-2 border-white"></span>
+        </button>
+    </div>
+
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Mobile Menu Logic
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
         });
+
+        // Chat Widget Logic
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+
+        function toggleChat() {
+            chatWindow.classList.toggle('hidden');
+            chatWindow.classList.toggle('opacity-0');
+            chatWindow.classList.toggle('scale-95');
+            
+            if (!chatWindow.classList.contains('hidden')) {
+                userInput.focus();
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function sendQuickMessage(text) {
+            userInput.value = text;
+            handleUserMessage();
+        }
+
+        function handleUserMessage(event) {
+            if (event) event.preventDefault();
+            
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // Add User Message
+            appendMessage('user', message);
+            userInput.value = '';
+
+            // Simulate Bot Thinking
+            showTyping();
+
+            // Simulate AI Delay
+            setTimeout(() => {
+                removeTyping();
+                generateBotResponse(message);
+            }, 1000);
+        }
+
+        function appendMessage(sender, text) {
+            const div = document.createElement('div');
+            div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const bubble = document.createElement('div');
+            if (sender === 'user') {
+                bubble.className = 'bg-icliniq text-white px-4 py-2 rounded-tl-xl rounded-tr-xl rounded-bl-xl shadow-sm max-w-[85%] text-sm';
+            } else {
+                bubble.className = 'bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm max-w-[85%] text-sm';
+            }
+            
+            // Allow HTML for links in bot responses
+            bubble.innerHTML = text;
+            
+            div.appendChild(bubble);
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.id = 'typing-indicator';
+            div.className = 'flex justify-start';
+            div.innerHTML = `
+                <div class="bg-gray-100 px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl max-w-[85%] flex space-x-1 items-center">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        function generateBotResponse(msg) {
+            const lowerMsg = msg.toLowerCase();
+            let response = "";
+
+            if (lowerMsg.includes('appointment') || lowerMsg.includes('book')) {
+                response = "I can help you book an appointment. Would you like to consult a General Physician or a Specialist? You can also <a href='#specialties' class='text-sky-600 underline'>browse specialties here</a>.";
+            } else if (lowerMsg.includes('fever') || lowerMsg.includes('temperature')) {
+                 response = "<b>For Fever:</b><br>• Stay hydrated with water or electrolytes.<br>• Rest properly.<br>• Use a cold compress if needed.<br>• Monitor your temperature.<br><br>⚠️ If fever persists above 102°F (39°C) or lasts more than 3 days, <a href='#' class='text-sky-600 font-bold'>consult a doctor immediately</a>.";
+            } else if (lowerMsg.includes('headache') || lowerMsg.includes('migraine')) {
+                 response = "<b>For Headache:</b><br>• Rest in a quiet, dark room.<br>• Drink plenty of water.<br>• Apply a hot or cold compress to your head or neck.<br><br>⚠️ If the pain is severe or sudden, <a href='#' class='text-sky-600 font-bold'>consult a specialist</a>.";
+            } else if (lowerMsg.includes('cold') || lowerMsg.includes('cough') || lowerMsg.includes('flu')) {
+                 response = "<b>For Cold/Flu:</b><br>• Drink warm fluids (soup, herbal tea).<br>• Gargle with salt water for sore throat.<br>• Get plenty of sleep.<br><br>⚠️ If you have trouble breathing, <a href='#' class='text-sky-600 font-bold'>seek medical help now</a>.";
+            } else if (lowerMsg.includes('stomach') || lowerMsg.includes('pain') || lowerMsg.includes('belly')) {
+                 response = "<b>For Stomach Pain:</b><br>• Avoid solid foods for a few hours.<br>• Sip clear fluids or water.<br>• Avoid dairy, caffeine, and alcohol.<br><br>⚠️ If pain is severe, accompanied by vomiting or fever, <a href='#' class='text-sky-600 font-bold'>consult a doctor</a>.";
+            } else if (lowerMsg.includes('symptom') || lowerMsg.includes('sick')) {
+                response = "I'm sorry to hear you're not feeling well. Please tell me more specifically (e.g., 'I have a fever' or 'headache') so I can give better advice.<br><br><a href='#' class='text-sky-600 font-bold'>Or click here to talk to a doctor now.</a>";
+            } else if (lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('fee')) {
+                response = "Our consultations start at just $19 for a chat query. Video consultations start at $29. We also offer unlimited plans for families.";
+            } else if (lowerMsg.includes('form') || lowerMsg.includes('register') || lowerMsg.includes('patient')) {
+                response = "You can fill out the new patient intake form here: <br><a href='https://forms.gle/hfQw4ywXctf5MkHX8' target='_blank' class='text-sky-600 font-bold underline'>Open Patient Form</a>";
+            } else if (lowerMsg.includes('hello') || lowerMsg.includes('hi')) {
+                response = "Hello there! I'm here to assist you with your health queries. What can I do for you?";
+            } else {
+                response = "I understand. To get the best medical advice, please <a href='#' class='text-sky-600 underline'>post your query</a> to a real doctor. They typically respond within 15 minutes.";
+            }
+
+            appendMessage('bot', response);
+        }
     </script>
 </body>
 </html>
